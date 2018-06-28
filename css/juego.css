@@ -40,7 +40,7 @@ li::before {
   border: 1px solid #363431;
   color: white;
   width: 190px;
-  height: 25px;
+  height: 30px;
   text-shadow: 0px -1px 1px black;
   font-size: 1em;
   border-radius: 5px;
@@ -57,6 +57,9 @@ li::before {
 .col-40 h1 {
   font-size: 20px;
   color: #E84A5F;
+  margin-bottom: 5%;
+  border: 1px solid #E84A5F;
+  padding: 3%;
 }
 
 .col-40, .col-60 {
