@@ -46,6 +46,14 @@ function chequearSiGano() {
           if(numeroDeLagrilla == 9) {
             mostrarCartelGanador();
             parar();
+            document.getElementById('inicio').value = "Juego Nuevo";
+            reinicio();
+            codigosDireccion = {
+              IZQUIERDA: null,
+              ARRIBA: null,
+              DERECHA: null,
+              ABAJO: null
+            }
           }
         }
       } 
