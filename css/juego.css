@@ -54,6 +54,12 @@ li::before {
   background-color: #E84A5F;
 }
 
+.mejorTiempo {
+  background: #fff;
+  padding: 30px;
+  height: 150px;
+}
+
 .col-40 h1 {
   font-size: 20px;
   color: #E84A5F;
