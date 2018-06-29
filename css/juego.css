@@ -60,6 +60,7 @@ li::before {
   margin-bottom: 5%;
   border: 1px solid #E84A5F;
   padding: 3%;
+  border-radius: 5px;
 }
 
 .col-40, .col-60 {
