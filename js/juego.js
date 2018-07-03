@@ -294,7 +294,6 @@ function inicio () {
     }    
     iniciar();
     control = setInterval(cronometro,10);
-    //document.getElementById("inicio").disabled = true;
     document.getElementById('inicio').value = "Parar Juego";
   } else {
     codigosDireccion = {
