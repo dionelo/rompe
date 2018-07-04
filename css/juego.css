@@ -97,6 +97,7 @@ li::before {
   width: 600px;
   height: 600px;
   background: #E84A5F;
+  opacity: 0.5;
 }
 
 #juego div {
