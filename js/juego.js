@@ -16,6 +16,23 @@ Esta posición comienza siendo la [2, 2]*/
 var filaVacia = 2;
 var columnaVacia = 2;
 
+// Variables del cronometro
+
+var centesimas = 0;
+var segundos = 0;
+var minutos = 0;
+var horas = 0;
+
+var centesimasMarcador = 0;
+var segundosMarcador = 0;
+var minutosMarcador = 0;
+var horasMarcador = 0;
+
+var centesimasRecord = 0;
+var segundosRecord = 0;
+var minutosRecord = 0;
+var horasRecord = 0;
+
 /* Esta función deberá recorrer el arreglo de instrucciones pasado por parámetro. 
 Cada elemento de este arreglo deberá ser mostrado en la lista con id 'lista-instrucciones'. 
 Para eso deberás usar la función ya implementada mostrarInstruccionEnLista().
@@ -35,8 +52,14 @@ function mostrarUltimoMovimiento(movimiento) {
 
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
+
 function chequearSiGano() {
     var numeroDelRompecabezasCompleto = 1;
+    centesimasMarcador = centesimas;
+    segundosMarcador = segundos;
+    minutosMarcador = minutos;
+    horasMarcador = horas;
+
     for(var i=0; i<grilla.length; i++) {
       var fila = grilla[i];
       for(var j=0; j<fila.length; j++) {
@@ -54,6 +77,8 @@ function chequearSiGano() {
               DERECHA: null,
               ABAJO: null
             }
+            actualizarUltimoTiempo();
+            record();
           }
         }
       } 
@@ -86,7 +111,6 @@ function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
     filaVacia = nuevaFila;
     columnaVacia = nuevaColumna;
 }
-
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
@@ -273,16 +297,9 @@ function iniciar() {
     capturarTeclas();
 }
 
-// Ejecutamos la función iniciar
-//iniciar();
 mostrarInstrucciones(instrucciones);
 
-//reloj
-
-var centesimas = 0;
-var segundos = 0;
-var minutos = 0;
-var horas = 0;
+// Reloj
 
 function inicio () {
   if (centesimas == 0) {
@@ -327,31 +344,66 @@ function reinicio () {
 function cronometro () {
   if (centesimas < 99) {
     centesimas++;
-    if (centesimas < 10) { centesimas = "0"+centesimas }
-    Centesimas.innerHTML = ":"+centesimas;
+    if (centesimas < 10) {
+      centesimas = "0" + centesimas;
+    }
+    Centesimas.innerHTML = ":" + centesimas;
   }
   if (centesimas == 99) {
     centesimas = -1;
   }
   if (centesimas == 0) {
     segundos ++;
-    if (segundos < 10) { segundos = "0"+segundos }
-    Segundos.innerHTML = ":"+segundos;
+    if (segundos < 10) {
+      segundos = "0" + segundos;
+    }
+    Segundos.innerHTML = ":" + segundos;
   }
   if (segundos == 59) {
     segundos = -1;
   }
-  if ( (centesimas == 0)&&(segundos == 0) ) {
+  if ((centesimas == 0) && (segundos == 0)) {
     minutos++;
-    if (minutos < 10) { minutos = "0"+minutos }
-    Minutos.innerHTML = ":"+minutos;
+    if (minutos < 10) {
+      minutos = "0" + minutos;
+    }
+    Minutos.innerHTML = ":" + minutos;
   }
   if (minutos == 59) {
     minutos = -1;
   }
-  if ( (centesimas == 0)&&(segundos == 0)&&(minutos == 0) ) {
+  if ((centesimas == 0) && (segundos == 0) && (minutos == 0)) {
     horas ++;
-    if (horas < 10) { horas = "0"+horas }
+    if (horas < 10) {
+      horas = "0" + horas;
+    }
     Horas.innerHTML = horas;
   }
 }
+
+function actualizarUltimoTiempo() {
+  CentesimasMarcador.innerHTML = ":" + centesimasMarcador;
+  SegundosMarcador.innerHTML = ":" + segundosMarcador;
+  if (minutosMarcador === 0) {
+      minutosMarcador = "0" + minutosMarcador;
+    }
+  MinutosMarcador.innerHTML = ":" + minutosMarcador;
+  if (horasMarcador === 0) {
+      horasMarcador = "0" + horasMarcador;
+    }
+  HorasMarcador.innerHTML = horasMarcador;
+}
+
+function record() {
+  if((horasRecord === 0 && minutosRecord === 0 && segundosRecord === 0 && centesimasRecord === 0) || (horasRecord > horasMarcador) || (horasRecord >= horasMarcador && minutosRecord > minutosMarcador) || (horasRecord >= horasMarcador && minutosRecord >= minutosMarcador && segundosRecord > segundosMarcador) || (horasRecord >= horasMarcador && minutosRecord >= minutosMarcador && segundosRecord >= segundosMarcador && centesimasRecord > centesimasMarcador)) {
+    horasRecord = horasMarcador;
+    minutosRecord = minutosMarcador;
+    segundosRecord = segundosMarcador;
+    centesimasRecord = centesimasMarcador;
+    HorasRecord.innerHTML = horasMarcador;
+    MinutosRecord.innerHTML = ":" + minutosMarcador;
+    SegundosRecord.innerHTML = ":" + segundosMarcador;
+    CentesimasRecord.innerHTML = ":" + centesimasMarcador; 
+  }  
+}
+

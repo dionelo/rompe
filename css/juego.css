@@ -56,8 +56,13 @@ li::before {
 
 .mejorTiempo {
   background: #fff;
-  padding: 30px;
+  padding: 20px;
+  width: 40%;
   height: 150px;
+  font-size: 0.8em;
+  display: inline-block;
+  margin: 3% 0 0 2%;
+  float: right;
 }
 
 .col-40 h1 {
@@ -97,7 +102,6 @@ li::before {
   width: 600px;
   height: 600px;
   background: #E84A5F;
-  opacity: 0.5;
 }
 
 #juego div {
